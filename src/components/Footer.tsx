@@ -113,7 +113,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-border/50 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
-            © 2024 CareConnect. All rights reserved.
+            © 2026 CareConnect. All rights reserved.
           </p>
 
           {/* Social Links */}
