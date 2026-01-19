@@ -1,0 +1,341 @@
+/* Healthcare Recruitment Platform - Clinical-Chic Design System */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Core Green Palette */
+    --emerald: 160 84% 20%;
+    --emerald-light: 160 84% 25%;
+    --emerald-dark: 160 84% 15%;
+    --mint: 149 80% 90%;
+    --mint-vivid: 149 80% 85%;
+    --sage: 140 30% 95%;
+    --sage-deep: 140 25% 90%;
+    
+    /* Semantic Tokens */
+    --background: 0 0% 100%;
+    --foreground: 160 30% 10%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 160 30% 10%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 160 30% 10%;
+    
+    --primary: 160 84% 20%;
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 149 80% 90%;
+    --secondary-foreground: 160 84% 20%;
+    
+    --muted: 140 30% 95%;
+    --muted-foreground: 160 20% 40%;
+    
+    --accent: 149 80% 85%;
+    --accent-foreground: 160 84% 15%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --success: 160 84% 20%;
+    --success-foreground: 0 0% 100%;
+    
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    
+    --border: 140 20% 88%;
+    --input: 140 20% 88%;
+    --ring: 160 84% 20%;
+    
+    --radius: 1.5rem;
+    
+    /* Glass Effects */
+    --glass-bg: 0 0% 100% / 0.7;
+    --glass-border: 0 0% 100% / 0.3;
+    --glass-blur: 20px;
+    
+    /* Shadows */
+    --shadow-sm: 0 2px 8px -2px hsl(160 30% 10% / 0.08);
+    --shadow-md: 0 8px 24px -4px hsl(160 30% 10% / 0.1);
+    --shadow-lg: 0 16px 48px -8px hsl(160 30% 10% / 0.12);
+    --shadow-glow: 0 0 40px -10px hsl(160 84% 20% / 0.3);
+    
+    /* Sidebar */
+    --sidebar-background: 140 30% 95%;
+    --sidebar-foreground: 160 30% 10%;
+    --sidebar-primary: 160 84% 20%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 149 80% 90%;
+    --sidebar-accent-foreground: 160 84% 20%;
+    --sidebar-border: 140 20% 88%;
+    --sidebar-ring: 160 84% 20%;
+  }
+
+  .dark {
+    --background: 160 30% 5%;
+    --foreground: 140 30% 95%;
+    --card: 160 25% 8%;
+    --card-foreground: 140 30% 95%;
+    --popover: 160 25% 8%;
+    --popover-foreground: 140 30% 95%;
+    --primary: 149 80% 75%;
+    --primary-foreground: 160 84% 10%;
+    --secondary: 160 25% 15%;
+    --secondary-foreground: 140 30% 95%;
+    --muted: 160 25% 15%;
+    --muted-foreground: 140 20% 65%;
+    --accent: 160 40% 20%;
+    --accent-foreground: 149 80% 85%;
+    --border: 160 25% 18%;
+    --input: 160 25% 18%;
+    --ring: 149 80% 75%;
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  /* Glassmorphism */
+  .glass {
+    @apply bg-white/70 backdrop-blur-xl border border-white/30;
+  }
+  
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-xl border border-white/40 shadow-md;
+  }
+  
+  .glass-dark {
+    @apply bg-emerald-950/70 backdrop-blur-xl border border-emerald-900/30;
+  }
+  
+  /* Hover Effects */
+  .hover-lift {
+    @apply transition-all duration-300 ease-out;
+  }
+  
+  .hover-lift:hover {
+    @apply -translate-y-1 shadow-lg;
+  }
+  
+  /* Pill Badges */
+  .badge-pill {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+  }
+  
+  /* Shimmer Loading */
+  .shimmer {
+    @apply relative overflow-hidden;
+  }
+  
+  .shimmer::after {
+    content: '';
+    @apply absolute inset-0;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(var(--mint) / 0.4),
+      transparent
+    );
+    animation: shimmer 1.5s infinite;
+  }
+  
+  /* Organic Shape Mask */
+  .organic-mask {
+    clip-path: polygon(
+      0% 0%,
+      100% 0%,
+      100% 85%,
+      85% 100%,
+      0% 100%
+    );
+    border-radius: 0 3rem 0 3rem;
+  }
+  
+  /* Trust Marquee */
+  .marquee {
+    @apply flex gap-16 animate-marquee;
+  }
+  
+  .marquee-container {
+    @apply flex overflow-hidden;
+  }
+  
+  /* Speech Bubble */
+  .speech-bubble {
+    @apply relative;
+  }
+  
+  .speech-bubble::after {
+    content: '';
+    @apply absolute -bottom-3 left-8 w-6 h-6 bg-inherit rotate-45 rounded-sm;
+  }
+  
+  /* Success Stepper */
+  .stepper-line {
+    @apply absolute left-4 top-8 bottom-0 w-0.5 bg-gradient-to-b from-emerald-500 to-transparent;
+  }
+  
+  /* Drop Zone */
+  .drop-zone {
+    @apply border-2 border-dashed border-emerald-300 rounded-2xl p-8 text-center transition-all duration-300;
+  }
+  
+  .drop-zone:hover {
+    @apply border-emerald-500 bg-mint/50;
+  }
+}
+
+@layer utilities {
+  /* Custom Gradients */
+  .gradient-hero {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--sage)) 0%,
+      hsl(var(--mint)) 50%,
+      hsl(var(--sage)) 100%
+    );
+  }
+  
+  .gradient-emerald {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--emerald)) 0%,
+      hsl(var(--emerald-light)) 100%
+    );
+  }
+  
+  .gradient-glass {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--glass-bg)) 0%,
+      hsl(0 0% 100% / 0.5) 100%
+    );
+  }
+  
+  /* Text Gradient */
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 via-emerald-600 to-emerald-500;
+  }
+}
+
+/* Animations */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Shimmer animation utility */
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px hsl(var(--emerald) / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px hsl(var(--emerald) / 0.5);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+/* Entrance Animations */
+.animate-fade-up {
+  animation: fade-up 0.6s ease-out forwards;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out forwards;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-scale-in {
+  animation: scale-in 0.4s ease-out forwards;
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Stagger Animation Delays */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
