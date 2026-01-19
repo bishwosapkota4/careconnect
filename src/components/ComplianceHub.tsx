@@ -85,7 +85,7 @@ const ComplianceHub = () => {
 
               {/* Steps */}
               <div className="space-y-8">
-                {steps.map((step, index) => (
+                {steps.map((step) => (
                   <div key={step.title} className="flex gap-5">
                     {/* Icon */}
                     <div
